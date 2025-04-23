@@ -82,8 +82,9 @@ while (true)
                 if (string.IsNullOrEmpty(lockers[lockerNumber]))
                 {
                     Console.Write("Enter the item you want to store in the locker: ");
+                    string item = Console.ReadLine();
 
-                    if (Console.ReadLine() == null)
+                    if (string.IsNullOrEmpty(item))
                     {
                         Console.WriteLine("You must provide an item description");
                         break;
@@ -91,7 +92,8 @@ while (true)
                     else
                     {
                         // Assing the string value to the corresponding array element
-                        lockers[lockerNumber] = Console.ReadLine();
+                        lockers[lockerNumber] = item;
+                        Console.WriteLine($"Locker number {lockerNumber} has been rented for {item}");
                         break;
                     }
                 }
@@ -145,19 +147,19 @@ while (true)
         // Loop through the locker array and output the locker number and the contents only if the element is not null
         for (int i = 0; i < lockers.Length; i++)
         {
-            //if (string.IsNullOrEmpty(lockers[i]))
-            //{
-            //    continue;
-            //}
-            //else
+            if (string.IsNullOrEmpty(lockers[i]))
+            {
+                continue;
+            }
+            else
+            {
+                Console.WriteLine($"Locker {i}: {lockers[i]}");
+            }
+
+            //if (lockers[i] != null)
             //{
             //    Console.WriteLine($"Locker {i}: {lockers[i]}");
             //}
-
-            if (lockers[i] != null)
-            {
-                Console.WriteLine($"Locker {i + 1}: {lockers[i]}");
-            }
         }
     }
 
